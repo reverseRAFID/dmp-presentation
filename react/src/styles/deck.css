@@ -273,3 +273,8 @@
     display: none;
   }
 }
+
+.hint__sep {
+  color: var(--rule-strong);
+  margin-inline: 2px;
+}

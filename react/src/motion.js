@@ -9,11 +9,17 @@
 export const EASE_OUT = [0.16, 1, 0.3, 1]
 export const STAGGER = 0.045
 
+/* AnimatePresence runs in "wait" mode, so exit finishes before enter starts.
+   The outgoing slide therefore clears fast; only the arrival is eased. */
 export const slideMotion = {
   initial: { opacity: 0, y: 14 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -10 },
-  transition: { duration: 0.42, ease: EASE_OUT },
+  exit: {
+    opacity: 0,
+    y: -8,
+    transition: { duration: 0.16, ease: 'easeIn' },
+  },
+  transition: { duration: 0.38, ease: EASE_OUT },
 }
 
 /* Children opt in via <Reveal d={n}>; d is the stagger position. */

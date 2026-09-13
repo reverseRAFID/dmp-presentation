@@ -29,6 +29,7 @@ other machines on the same network at `http://<this machine's LAN IP>:5180/`.
 | `←` `↑` `PageUp` | Previous slide |
 | `1`–`9`, `0` | Jump to a slide |
 | `Home` / `End` | First / last slide |
+| `F` | Toggle fullscreen (`Esc` exits) |
 | Swipe, tick marks, arrow buttons | Also work |
 
 `↑`/`↓` scroll a slide first when its content is taller than the window. The URL
@@ -40,21 +41,25 @@ hash tracks the current slide, so `#7` is a direct link.
 2. **What we are asking** — one vehicle, two crew, four road types; and what we are *not* asking for
 3. **The problem** — the two questions a ground robot must answer continuously
 4. **The solution** — record, anonymise, develop, publish; and why Dhaka
-5. **The vehicle** — the sensors, in plain words
-6. **Recording** — what is recorded and what never is
-7. **Conduct on the road** — how the vehicle behaves in traffic
-8. **Privacy** — the blurring pipeline
-9. **If something happens** — collisions, offences caught on camera, objections, lawful orders
-10. **Where and when** — road types, hours, phasing
-11. **Approvals** — IRB, departmental authorisation, the Personal Data Protection Ordinance 2025
-12. **Our request** — the three asks, and contact details
-13. **References** — the IRB application's own reference list
+5. **Existing work** — what South Asia has already built, and the modality it stops short of
+6. **The vehicle** — the sensors, in plain words
+7. **Recording** — what is recorded and what never is
+8. **Conduct on the road** — how the vehicle behaves in traffic
+9. **Privacy** — the blurring pipeline
+10. **If something happens** — collisions, offences caught on camera, objections, lawful orders
+11. **Where and when** — road types, hours, phasing
+12. **Approvals** — IRB, departmental authorisation, the Personal Data Protection Ordinance 2025
+13. **Our request** — the three asks, and contact details
+14. **References** — the IRB application's reference list, plus the regional datasets cited
 
 ## Imagery
 
 - **Privacy** — a real before/after anonymisation pair, generated from the project's
   own vehicle photograph. `tools/make-anon-pair.py` regenerates it; the face boxes
   are listed in that script.
+- **Existing work** — figures from BadODD (arXiv:2401.10659) and IDD-3D
+  (arXiv:2210.12878), both CC BY 4.0, reproduced with attribution in the caption. The
+  attribution must stay with the image.
 - **Where and when** — the Dhaka road network, drawn from OpenStreetMap. Geometry was
   fetched from the Overpass API, projected to Web Mercator and simplified offline into
   `src/data/dhakaMap.json` (50 KB), so the slide makes no network request at display

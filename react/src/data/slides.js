@@ -15,6 +15,7 @@ import Cover from '../components/slides/Cover.jsx'
 import Request from '../components/slides/Request.jsx'
 import Problem from '../components/slides/Problem.jsx'
 import Solution from '../components/slides/Solution.jsx'
+import ExistingWork from '../components/slides/ExistingWork.jsx'
 import Platform from '../components/slides/Platform.jsx'
 import Recorded from '../components/slides/Recorded.jsx'
 import Conduct from '../components/slides/Conduct.jsx'
@@ -52,50 +53,56 @@ export const slides = [
     Component: Solution,
   },
   {
+    id: 'existing-work',
+    section: '04 — Existing work',
+    title: 'Camera datasets exist. Navigation datasets do not.',
+    Component: ExistingWork,
+  },
+  {
     id: 'platform',
-    section: '04 — The vehicle',
+    section: '05 — The vehicle',
     title: 'One marked pickup, sensors facing outward',
     Component: Platform,
   },
   {
     id: 'recorded',
-    section: '05 — Recording',
+    section: '06 — Recording',
     title: 'What is recorded, and what never is',
     Component: Recorded,
   },
   {
     id: 'conduct',
-    section: '06 — Conduct on the road',
+    section: '07 — Conduct on the road',
     title: 'How the vehicle behaves in traffic',
     Component: Conduct,
   },
   {
     id: 'privacy',
-    section: '07 — Privacy',
+    section: '08 — Privacy',
     title: 'Nothing identifiable is published',
     Component: Privacy,
   },
   {
     id: 'incidents',
-    section: '08 — If something happens',
+    section: '09 — If something happens',
     title: 'Arranged responses, agreed in advance',
     Component: Incidents,
   },
   {
     id: 'scope',
-    section: '09 — Where and when',
+    section: '10 — Where and when',
     title: 'Four road types, by day and at night',
     Component: Scope,
   },
   {
     id: 'approvals',
-    section: '10 — Approvals',
+    section: '11 — Approvals',
     title: 'Approvals and legal basis',
     Component: Approvals,
   },
   {
     id: 'ask',
-    section: '11 — Our request',
+    section: '12 — Our request',
     title: 'What we ask of the Dhaka Metropolitan Police',
     Component: Ask,
   },

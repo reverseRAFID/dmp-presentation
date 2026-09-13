@@ -46,9 +46,9 @@ export function StatHero({ value, unit, children, d = 1 }) {
 }
 
 /* A published figure, always shown with its source and licence. */
-export function Figure({ src, alt, caption, credit, contain = false, d = 0 }) {
+export function Figure({ src, alt, caption, credit, contain = false, short = false, d = 0 }) {
   return (
-    <Reveal as="figure" d={d} variant="scale" className="figure">
+    <Reveal as="figure" d={d} variant="scale" className={`figure${short ? ' figure--short' : ''}`}>
       <div className={`figure__frame${contain ? ' is-contain' : ''}`}>
         <img src={src} alt={alt} loading="lazy" />
       </div>

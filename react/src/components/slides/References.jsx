@@ -4,7 +4,7 @@ import { Kicker } from './parts.jsx'
 /* Taken from the reference list of the IRB application itself. */
 const GROUPS = [
   {
-    title: 'Legal instruments',
+    title: 'Law and practice',
     items: [
       {
         t: 'Personal Data Protection Ordinance, 2025',
@@ -14,16 +14,11 @@ const GROUPS = [
       {
         t: 'Cyber Security Ordinance, 2025',
         a: 'Government of Bangladesh',
-        v: 'Ordinance No. 25 of 2025, gazetted 21 May 2025, repealing the Cyber Security Act, 2023',
+        v: 'Ordinance No. 25 of 2025, gazetted 21 May 2025',
       },
-    ],
-  },
-  {
-    title: 'Practice',
-    items: [
       {
         t: 'Datasheets for datasets',
-        a: 'Gebru, Morgenstern, Vecchione, Vaughan, Wallach, Daumé III, Crawford',
+        a: 'Gebru et al.',
         v: 'Communications of the ACM, 64(12), 86–92 (2021)',
       },
     ],
@@ -38,37 +33,81 @@ const GROUPS = [
       },
       {
         t: 'The Cityscapes dataset for semantic urban scene understanding',
-        a: 'Cordts, Omran, Ramos, Rehfeld, Enzweiler, Benenson, Franke, Roth, Schiele',
+        a: 'Cordts et al.',
         v: 'CVPR 2016, 3213–3223',
       },
       {
         t: 'nuScenes: A multimodal dataset for autonomous driving',
-        a: 'Caesar, Bankiti, Lang, Vora, Liong, Xu, Krishnan, Pan, Baldan, Beijbom',
+        a: 'Caesar et al.',
         v: 'CVPR 2020, 11621–11631',
       },
       {
         t: 'Scalability in perception for autonomous driving: Waymo Open Dataset',
-        a: 'Sun, Kretzschmar, Dotiwalla, Chouard, Patnaik and others',
+        a: 'Sun et al.',
         v: 'CVPR 2020, 2446–2454',
       },
       {
         t: 'BDD100K: A diverse driving dataset for heterogeneous multitask learning',
-        a: 'Yu, Chen, Wang, Xian, Chen, Liu, Madhavan, Darrell',
+        a: 'Yu et al.',
         v: 'CVPR 2020, 2636–2645',
       },
     ],
   },
   {
-    title: 'South Asia',
+    title: 'India',
     items: [
       {
         t: 'IDD: A dataset for exploring problems of autonomous navigation in unconstrained environments',
-        a: 'Varma, Subramanian, Namboodiri, Chandraker, Jawahar',
+        a: 'Varma et al.',
         v: 'WACV 2019, 1743–1751',
       },
       {
+        t: 'IDD-3D: Indian Driving Dataset for 3D unstructured road scenes',
+        a: 'Dokania et al.',
+        v: 'WACV 2023, arXiv:2210.12878',
+      },
+      {
+        t: 'DriveIndia: An object detection dataset for diverse Indian traffic scenes',
+        a: 'Kumar, Reddy, Rajalakshmi',
+        v: '2025, arXiv:2507.19912',
+      },
+    ],
+  },
+  {
+    title: 'Pakistan and Sri Lanka',
+    items: [
+      {
+        t: 'CARL-D: A vision benchmark suite and large scale dataset for vehicle detection and scene segmentation',
+        a: 'Butt et al., Control, Automotive & Robotics Lab, MUST',
+        v: 'Signal Processing: Image Communication',
+      },
+      {
+        t: 'R2S100K: Road-region segmentation dataset for semi-supervised autonomous driving in the wild',
+        a: 'Butt et al.',
+        v: '2023, arXiv:2308.06393',
+      },
+      {
+        t: 'Towards real-time traffic sign and traffic light detection on embedded systems',
+        a: 'Jayasinghe et al.',
+        v: 'CeyRo dataset, Sri Lanka. IEEE Intelligent Vehicles Symposium 2022',
+      },
+    ],
+  },
+  {
+    title: 'Bangladesh',
+    items: [
+      {
+        t: 'BadODD: Bangladeshi autonomous driving object detection dataset',
+        a: 'Baig et al.',
+        v: '2024, arXiv:2401.10659',
+      },
+      {
+        t: 'Bangladeshi native vehicle detection in the wild (BNVD)',
+        v: '2024, arXiv:2405.12150',
+      },
+      {
         t: 'Poribohon-BD: Bangladeshi local vehicle image dataset with annotation for classification',
-        a: 'Tabassum, Ullah, Al-nur, Shatabda',
+        a: 'Tabassum et al.',
         v: 'Data in Brief, 33, 106465 (2020)',
       },
     ],
@@ -107,8 +146,9 @@ export default function References() {
       </div>
 
       <Reveal as="p" d={6} className="source">
-        <b>Full detail:</b> the complete data collection plan, storage tiers, labelling
-        procedure, consent forms and release arrangements are set out in the IRB
+        <b>Figure credits:</b> BadODD and IDD-3D figures reproduced under CC BY 4.0 with
+        attribution. <b>Full detail:</b> the complete data collection plan, storage tiers,
+        labelling procedure, consent forms and release arrangements are set out in the IRB
         application submitted to BRAC University.
       </Reveal>
     </div>

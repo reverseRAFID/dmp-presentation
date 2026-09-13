@@ -9,6 +9,20 @@ const SCROLL_KEYS = new Set(['ArrowUp', 'ArrowDown'])
 const SCROLL_STEP = 120
 const SWIPE_MIN = 56
 
+/* Fullscreen, with the older WebKit spelling for Safari. The request must
+   come from a user gesture — a keypress qualifies. */
+function toggleFullscreen() {
+  const doc = document
+  const el = doc.documentElement
+  const isFull = doc.fullscreenElement || doc.webkitFullscreenElement
+  const fn = isFull
+    ? doc.exitFullscreen || doc.webkitExitFullscreen
+    : el.requestFullscreen || el.webkitRequestFullscreen
+  if (!fn) return
+  const result = fn.call(isFull ? doc : el)
+  if (result && typeof result.catch === 'function') result.catch(() => {})
+}
+
 function hashIndex(count) {
   const n = Number.parseInt(window.location.hash.replace(/\D/g, ''), 10)
   return Number.isFinite(n) && n >= 1 && n <= count ? n - 1 : 0
@@ -61,6 +75,9 @@ export default function Deck({ slides }) {
       } else if (event.key === 'End') {
         event.preventDefault()
         go(count - 1)
+      } else if (event.key === 'f' || event.key === 'F') {
+        event.preventDefault()
+        toggleFullscreen()
       } else if (/^[0-9]$/.test(event.key)) {
         event.preventDefault()
         const n = event.key === '0' ? 10 : Number(event.key)
@@ -129,6 +146,9 @@ export default function Deck({ slides }) {
           <span className="hint label" aria-hidden="true">
             <kbd>←</kbd>
             <kbd>→</kbd>
+            <span className="hint__sep">·</span>
+            <kbd>F</kbd>
+            fullscreen
           </span>
         )}
       </header>

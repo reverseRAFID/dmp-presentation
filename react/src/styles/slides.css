@@ -159,6 +159,28 @@
   object-fit: contain;
 }
 
+/* Height-capped figure, so two of different aspect can share a row. */
+.figure--short .figure__frame {
+  height: clamp(140px, 23vh, 270px);
+  display: grid;
+  /* minmax(0, 1fr) pins the row to the frame, so max-height below resolves
+     against the frame rather than against the image's own height. */
+  grid-template-rows: minmax(0, 1fr);
+  place-items: center;
+  padding: var(--s-2);
+}
+
+.figure--short .figure__frame img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.note--wide {
+  max-width: 100%;
+}
+
 .figure__cap {
   display: flex;
   flex-direction: column;
@@ -533,14 +555,14 @@
 .refs {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(var(--s-4), 2.2vh, var(--s-6)) clamp(var(--s-7), 4vw, var(--s-9));
+  gap: clamp(var(--s-3), 1.8vh, var(--s-5)) clamp(var(--s-6), 3.4vw, var(--s-8));
   align-items: start;
 }
 
 .refgroup {
   display: flex;
   flex-direction: column;
-  gap: var(--s-3);
+  gap: var(--s-2);
 }
 
 .refgroup__title {
@@ -558,8 +580,8 @@
   display: grid;
   grid-template-columns: 2.4em minmax(0, 1fr);
   gap: var(--s-2);
-  font-size: clamp(0.8125rem, 0.95vw, 1rem);
-  line-height: 1.4;
+  font-size: clamp(0.75rem, 0.82vw, 0.9375rem);
+  line-height: 1.34;
   color: var(--ink-2);
 }
 
@@ -1047,5 +1069,82 @@
   .matrix th,
   .matrix td {
     padding-inline: var(--s-2);
+  }
+}
+
+/* --- Regional summary strip ----------------------------------------- */
+
+.region {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--col-gap);
+}
+
+.region__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-top: var(--s-3);
+  border-top: 2px solid var(--rule);
+}
+
+.region__col.is-here {
+  border-top-color: var(--accent);
+}
+
+.region__place {
+  font-size: var(--t-small);
+  font-weight: 700;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+}
+
+.region__col.is-here .region__place {
+  color: var(--accent);
+}
+
+.region__sets {
+  font-size: var(--t-micro);
+  line-height: 1.4;
+  color: var(--ink-3);
+}
+
+.region__reach {
+  font-size: var(--t-small);
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+@media (max-width: 1180px) {
+  .region {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-4) var(--col-gap);
+  }
+}
+
+@media (max-width: 900px) {
+  .region {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* The reference list is the densest slide in the deck. On a short
+   projector it tightens rather than scrolls. */
+@media (max-height: 780px) {
+  .refs {
+    gap: var(--s-2) clamp(var(--s-5), 3vw, var(--s-7));
+  }
+
+  .refgroup {
+    gap: 5px;
+  }
+
+  .ref {
+    font-size: 0.6875rem;
+    line-height: 1.26;
+  }
+
+  .refgroup__title {
+    padding-bottom: 3px;
   }
 }

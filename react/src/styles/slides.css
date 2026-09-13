@@ -161,7 +161,7 @@
 
 /* Height-capped figure, so two of different aspect can share a row. */
 .figure--short .figure__frame {
-  height: clamp(140px, 23vh, 270px);
+  height: clamp(130px, 21vh, 250px);
   display: grid;
   /* minmax(0, 1fr) pins the row to the frame, so max-height below resolves
      against the frame rather than against the image's own height. */
@@ -1146,5 +1146,41 @@
 
   .refgroup__title {
     padding-bottom: 3px;
+  }
+}
+
+/* Three figures abreast on the existing-work slide. */
+.figrow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(var(--s-4), 2.4vw, var(--s-7));
+  align-items: start;
+}
+
+@media (max-width: 1180px) {
+  .figrow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .figrow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Three figures plus the regional strip is the tallest slide in the deck;
+   give it a little more room on a short projector. */
+@media (max-height: 760px) {
+  .figrow {
+    gap: var(--s-3);
+  }
+
+  .figure--short .figure__frame {
+    height: clamp(115px, 18vh, 190px);
+  }
+
+  .region__col {
+    padding-top: var(--s-2);
   }
 }

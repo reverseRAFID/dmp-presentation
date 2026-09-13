@@ -1,7 +1,8 @@
 import Reveal from '../Reveal.jsx'
 import { Figure, Kicker } from './parts.jsx'
 import badodd from '../../assets/papers/badodd.png'
-import idd3d from '../../assets/papers/idd3d.png'
+import iddVehicle from '../../assets/papers/idd3d-vehicle.png'
+import iddScene from '../../assets/papers/idd3d-scene.png'
 
 /* What the region has already built, and the modality each stops at. */
 const REGION = [
@@ -39,12 +40,13 @@ export default function ExistingWork() {
           </Reveal>
         </div>
         <Reveal as="p" d={2} className="lead">
-          Four countries have built road datasets. Only India has gone past the camera —
-          and none of them records the vehicle&rsquo;s own corrected path.
+          Four countries have built public road datasets; only India has gone past the
+          camera — with a rig much like ours. What nobody has built is the Bangladeshi
+          one.
         </Reveal>
       </div>
 
-      <div className="split split--even">
+      <div className="figrow">
         <Figure
           src={badodd}
           alt="Sample frames from the BadODD dataset across Sylhet, Dhaka, Rajshahi, Mymensingh, Maowa Expressway and Dhaka at night, each with 2D boxes drawn around vehicles."
@@ -54,12 +56,20 @@ export default function ExistingWork() {
           d={3}
         />
         <Figure
-          src={idd3d}
-          alt="IDD-3D figure: LiDAR point clouds with 3D boxes, a camera view of unstructured Indian traffic, and LiDAR points projected onto the camera image."
-          caption="India — IDD-3D: laser point clouds, 3D boxes and a synchronised camera."
-          credit="Dokania, Hafez, Subramanian, Chandraker, Jawahar, WACV 2023, arXiv:2210.12878 · CC BY 4.0"
+          src={iddVehicle}
+          alt="The IDD-3D collection car: a small white sedan with a laser scanner and six cameras mounted on a roof frame."
+          caption="India — the IDD-3D collection car: six cameras and a roof LiDAR. The same configuration we propose, on a smaller vehicle."
+          credit="Dokania et al., WACV 2023, arXiv:2210.12878 · CC BY 4.0"
           short
           d={4}
+        />
+        <Figure
+          src={iddScene}
+          alt="An IDD-3D scene: a bird's-eye LiDAR point cloud with colour-coded 3D boxes and tracking numbers on each road user, with three camera views inset showing auto-rickshaws and motorcycles."
+          caption="What that rig produces: every road user boxed in three dimensions and tracked, with the camera views alongside."
+          credit="Dokania et al., WACV 2023, arXiv:2210.12878 · CC BY 4.0"
+          short
+          d={5}
         />
       </div>
 
@@ -67,7 +77,7 @@ export default function ExistingWork() {
         {REGION.map((r, i) => (
           <Reveal
             key={r.place}
-            d={5 + i}
+            d={6 + i}
             className={`region__col${r.here ? ' is-here' : ''}`}
           >
             <span className="region__place">{r.place}</span>

@@ -57,9 +57,11 @@ hash tracks the current slide, so `#7` is a direct link.
 - **Privacy** — a real before/after anonymisation pair, generated from the project's
   own vehicle photograph. `tools/make-anon-pair.py` regenerates it; the face boxes
   are listed in that script.
-- **Existing work** — figures from BadODD (arXiv:2401.10659) and IDD-3D
-  (arXiv:2210.12878), both CC BY 4.0, reproduced with attribution in the caption. The
-  attribution must stay with the image.
+- **Existing work** — three figures, all **CC BY 4.0**, reproduced with attribution in
+  the caption; the attribution must stay with the image.
+  - `badodd.png` — BadODD, Baig et al. 2024, arXiv:2401.10659
+  - `idd3d-vehicle.png` and `idd3d-scene.png` — both cropped from figures in IDD-3D,
+    Dokania et al., WACV 2023, arXiv:2210.12878
 - **Where and when** — the Dhaka road network, drawn from OpenStreetMap. Geometry was
   fetched from the Overpass API, projected to Web Mercator and simplified offline into
   `src/data/dhakaMap.json` (50 KB), so the slide makes no network request at display

@@ -23,6 +23,11 @@ function toggleFullscreen() {
   if (result && typeof result.catch === 'function') result.catch(() => {})
 }
 
+/* ?export=1 drops the interactive chrome, which is dead weight in a PDF. */
+function isExport() {
+  return new URLSearchParams(window.location.search).has('export')
+}
+
 function hashIndex(count) {
   const n = Number.parseInt(window.location.hash.replace(/\D/g, ''), 10)
   return Number.isFinite(n) && n >= 1 && n <= count ? n - 1 : 0
@@ -116,6 +121,7 @@ export default function Deck({ slides }) {
     go(dx < 0 ? index + 1 : index - 1)
   }
 
+  const exporting = isExport()
   const slide = slides[index]
   const Slide = slide.Component
   const motionProps = reduced
@@ -123,7 +129,7 @@ export default function Deck({ slides }) {
     : slideMotion
 
   return (
-    <main className="deck">
+    <main className={`deck${exporting ? ' is-export' : ''}`}>
       <h1 className="sr-only">
         A multi-sensor road dataset for Dhaka — BRAC University
       </h1>

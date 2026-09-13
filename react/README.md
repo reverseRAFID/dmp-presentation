@@ -21,6 +21,27 @@ npm run preview  # serve the production build on :4180
 The dev and preview servers bind to all interfaces, so the deck is reachable from
 other machines on the same network at `http://<this machine's LAN IP>:5180/`.
 
+## Exporting to PDF
+
+```bash
+./tools/export-pdf.sh                 # writes ../dmp-presentation.pdf
+./tools/export-pdf.sh ~/talk.pdf      # or anywhere you like
+```
+
+One slide per page, 1440×810pt (16:9). Each page is printed by headless Chrome rather
+than screenshotted, so **the text stays selectable** and the Dhaka map — which is inline
+SVG — stays sharp at any zoom. The script builds, serves on :4199, prints every slide
+and merges the pages with `pdfunite`.
+
+Two things make this work, and they are easy to break:
+
+- The responsive breakpoints are scoped `@media screen and (max-width: …)`. Without
+  `screen`, they also apply to print, and every slide exports at its phone layout.
+- `?export=1` hides the prev/next buttons, the tick strip and the keyboard hint, which
+  are dead controls on paper.
+
+Needs a Chromium-family browser and `pdfunite` (poppler-utils).
+
 ## Navigating
 
 | Input | Action |
@@ -30,6 +51,8 @@ other machines on the same network at `http://<this machine's LAN IP>:5180/`.
 | `1`–`9`, `0` | Jump to a slide |
 | `Home` / `End` | First / last slide |
 | `F` | Toggle fullscreen (`Esc` exits) |
+
+Add `?export=1` to the URL to hide the interactive chrome.
 | Swipe, tick marks, arrow buttons | Also work |
 
 `↑`/`↓` scroll a slide first when its content is taller than the window. The URL

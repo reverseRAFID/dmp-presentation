@@ -988,7 +988,7 @@
 
 /* --- Responsive ------------------------------------------------------- */
 
-@media (max-width: 1180px) {
+@media screen and (max-width: 1180px) {
   .steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1015,7 +1015,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .cover {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) minmax(0, 0.8fr);
@@ -1060,7 +1060,7 @@
   }
 }
 
-@media (max-width: 560px) {
+@media screen and (max-width: 560px) {
   .facts-2,
   .ground__facts {
     grid-template-columns: minmax(0, 1fr);
@@ -1115,14 +1115,14 @@
   color: var(--ink-2);
 }
 
-@media (max-width: 1180px) {
+@media screen and (max-width: 1180px) {
   .region {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--s-4) var(--col-gap);
   }
 }
 
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .region {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1130,7 +1130,7 @@
 
 /* The reference list is the densest slide in the deck. On a short
    projector it tightens rather than scrolls. */
-@media (max-height: 780px) {
+@media screen and (max-height: 780px) {
   .refs {
     gap: var(--s-2) clamp(var(--s-5), 3vw, var(--s-7));
   }
@@ -1157,13 +1157,13 @@
   align-items: start;
 }
 
-@media (max-width: 1180px) {
+@media screen and (max-width: 1180px) {
   .figrow {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .figrow {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1171,7 +1171,7 @@
 
 /* Three figures plus the regional strip is the tallest slide in the deck;
    give it a little more room on a short projector. */
-@media (max-height: 760px) {
+@media screen and (max-height: 760px) {
   .figrow {
     gap: var(--s-3);
   }

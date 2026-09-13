@@ -1,0 +1,24 @@
+# Dependencies and build output
+node_modules/
+dist/
+.vite/
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+
+# ---------------------------------------------------------------
+# Research documents — NOT for a public repository.
+# These hold the full IRB application, personal contact details and
+# the consent arrangements. Remove these lines only if the repository
+# is private and you intend to track them.
+# ---------------------------------------------------------------
+irb.md
+IRB_application_form_FILLED.pdf

@@ -1,0 +1,217 @@
+/* ------------------------------------------------------------------
+   Reset + shared type primitives.
+   ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  line-height: var(--lh-normal);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+::selection {
+  background: var(--selection);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Type primitives -------------------------------------------- */
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 1.2;
+}
+
+.label--accent {
+  color: var(--accent);
+}
+
+.label--ink {
+  color: var(--ink-2);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-display);
+  font-size: var(--t-display);
+}
+
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--t-h1);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
+  max-width: 20ch;
+}
+
+.h1--wide {
+  max-width: 32ch;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--t-h2);
+  line-height: 1.14;
+  letter-spacing: -0.016em;
+  text-wrap: balance;
+  max-width: 24ch;
+}
+
+.h3 {
+  font-family: var(--font-text);
+  font-weight: 600;
+  font-size: var(--t-h3);
+  line-height: 1.28;
+  letter-spacing: -0.011em;
+}
+
+.lead {
+  font-size: var(--t-lead);
+  line-height: 1.36;
+  color: var(--ink-2);
+  font-weight: 400;
+  letter-spacing: -0.013em;
+  max-width: 34ch;
+  text-wrap: pretty;
+}
+
+.body {
+  font-size: var(--t-body);
+  line-height: var(--lh-loose);
+  color: var(--ink-2);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.small {
+  font-size: var(--t-small);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.stat {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--t-stat);
+  line-height: 0.84;
+  letter-spacing: -0.04em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.stat--hero {
+  font-size: var(--t-stat-hero);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.muted {
+  color: var(--ink-3);
+}
+
+/* --- Structure ---------------------------------------------------- */
+
+.rule {
+  border: 0;
+  border-top: var(--hair) solid var(--rule);
+  width: 100%;
+}
+
+/* Chart bars and rules still wipe in with CSS; element-level motion
+   is handled by framer-motion so the two never fight. */
+.draw {
+  animation: draw 620ms var(--ease-out) backwards;
+  transform-origin: left center;
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

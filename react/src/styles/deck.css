@@ -1,0 +1,275 @@
+/* ------------------------------------------------------------------
+   Deck chrome: frame, progress, counter, ticks, navigation.
+   Legible but quiet — the chrome should never compete with a slide.
+   ------------------------------------------------------------------ */
+
+.deck {
+  position: fixed;
+  inset: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* --- Progress rail ---------------------------------------------- */
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--rule-soft);
+  z-index: 30;
+}
+
+.progress__fill {
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left center;
+}
+
+/* --- Header / footer -------------------------------------------- */
+
+.chrome {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--s-3), 1.4vw, var(--s-5));
+  padding-inline: var(--gutter);
+  background: var(--paper);
+  pointer-events: none;
+}
+
+.chrome > * {
+  pointer-events: auto;
+}
+
+.chrome--top {
+  top: 0;
+  height: var(--chrome-top);
+  border-bottom: var(--hair) solid var(--rule-soft);
+}
+
+.chrome--bottom {
+  bottom: 0;
+  height: var(--chrome-bottom);
+  border-top: var(--hair) solid var(--rule-soft);
+}
+
+.chrome__logo {
+  height: clamp(30px, 4.4vh, 48px);
+  width: auto;
+  flex: none;
+}
+
+.chrome__sep {
+  width: var(--hair);
+  height: 18px;
+  background: var(--rule-strong);
+  flex: none;
+}
+
+.chrome__section {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ink-2);
+}
+
+.chrome__spacer {
+  flex: 1;
+  pointer-events: none;
+}
+
+.chrome__count {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.chrome__count b {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* --- Tick navigation -------------------------------------------- */
+
+.ticks {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.tick {
+  --h: 10px;
+  position: relative;
+  width: 15px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-sm);
+}
+
+.tick::after {
+  content: "";
+  width: 2px;
+  height: var(--h);
+  background: var(--rule-strong);
+  border-radius: var(--r-pill);
+  transition:
+    height var(--dur-2) var(--ease-out),
+    background-color var(--dur-2) var(--ease-io);
+}
+
+.tick:hover::after {
+  background: var(--ink-2);
+  --h: 14px;
+}
+
+.tick[aria-current="true"]::after {
+  background: var(--accent);
+  --h: 20px;
+}
+
+/* --- Prev / next ------------------------------------------------- */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.nav__btn {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: var(--hair) solid var(--rule);
+  border-radius: var(--r-md);
+  color: var(--ink-2);
+  transition:
+    border-color var(--dur-1) var(--ease-io),
+    color var(--dur-1) var(--ease-io),
+    background-color var(--dur-1) var(--ease-io),
+    transform var(--dur-1) var(--ease-io);
+}
+
+.nav__btn:hover:not(:disabled) {
+  color: var(--accent);
+  border-color: var(--accent-edge);
+  background: var(--accent-wash);
+}
+
+.nav__btn:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.nav__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.nav__btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* --- Keyboard hint (first slide only) ---------------------------- */
+
+.hint {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  color: var(--ink-3);
+}
+
+.hint kbd {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 5px 6px;
+  border: var(--hair) solid var(--rule);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  color: var(--ink-2);
+  background: var(--paper-raised);
+}
+
+/* --- Stage ------------------------------------------------------- */
+
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: safe center;
+  padding: calc(var(--chrome-top) + var(--s-5)) var(--gutter)
+    calc(var(--chrome-bottom) + var(--s-5));
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule-strong) transparent;
+}
+
+/* Full-bleed slides run edge to edge between the chrome bars. */
+.slide--bleed {
+  padding-inline: 0;
+  padding-block: var(--chrome-top) var(--chrome-bottom);
+}
+
+.slide__inner {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+.slide--bleed .slide__inner {
+  max-width: none;
+  height: 100%;
+}
+
+/* Source / attribution line under a block of content. */
+.source {
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+  line-height: 1.5;
+  letter-spacing: 0.015em;
+  color: var(--ink-3);
+  max-width: 78ch;
+}
+
+.source b {
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+@media (max-width: 760px) {
+  .chrome--bottom .ticks,
+  .hint {
+    display: none;
+  }
+  .slide {
+    justify-content: flex-start;
+    padding-top: calc(var(--chrome-top) + var(--s-6));
+  }
+}
+
+@media (max-width: 520px) {
+  .chrome__sep,
+  .chrome__section {
+    display: none;
+  }
+}

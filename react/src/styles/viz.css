@@ -1,0 +1,164 @@
+/* ------------------------------------------------------------------
+   Figure styling — currently the Dhaka map.
+   ------------------------------------------------------------------ */
+
+.viz {
+  margin: 0;
+  min-width: 0;
+}
+
+.viz__caption {
+  margin-top: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+  letter-spacing: 0.015em;
+  color: var(--ink-3);
+  line-height: 1.5;
+}
+
+/* --- Dhaka map (OpenStreetMap geometry, rendered offline) ----------- */
+
+.viz--map {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  width: 100%;
+  min-width: 0;
+}
+
+.map__frame {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  border: var(--hair) solid var(--rule);
+  border-radius: var(--r-md);
+  background: var(--paper-sunk);
+  padding: var(--s-3);
+  overflow: hidden;
+}
+
+.map {
+  display: block;
+  height: min(58vh, 620px);
+  width: auto;
+  max-width: 100%;
+}
+
+.map__rivers path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 11;
+  stroke-opacity: 0.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.map__road path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.map__road--minor path {
+  stroke: var(--ink-3);
+  stroke-width: 2;
+  stroke-opacity: 0.62;
+}
+
+.map__road--major path {
+  stroke: var(--ink-2);
+  stroke-width: 3;
+  stroke-opacity: 0.85;
+}
+
+.map__road--trunk path {
+  stroke: var(--accent);
+  stroke-width: 4.2;
+  stroke-opacity: 0.9;
+}
+
+.map__road--motorway path {
+  stroke: var(--accent);
+  stroke-width: 6;
+}
+
+.map__pin-halo {
+  fill: var(--accent);
+  fill-opacity: 0.16;
+}
+
+.map__pin-dot {
+  fill: var(--accent);
+  stroke: var(--paper);
+  stroke-width: 3;
+}
+
+.map__pin-label {
+  position: absolute;
+  transform: translate(16px, -50%);
+  white-space: nowrap;
+  padding: 5px 9px;
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.94);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+
+.map__pin-label.is-left {
+  transform: translate(calc(-100% - 16px), -50%);
+}
+
+.map__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-5);
+}
+
+.map__key {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--t-micro);
+  color: var(--ink-2);
+}
+
+.map__swatch {
+  width: 18px;
+  height: 3px;
+  border-radius: var(--r-pill);
+  flex: none;
+}
+
+.map__swatch--motorway {
+  background: var(--accent);
+  height: 4px;
+}
+
+.map__swatch--major {
+  background: var(--ink-2);
+  opacity: 0.6;
+}
+
+.map__swatch--minor {
+  background: var(--ink-3);
+  opacity: 0.45;
+}
+
+.map__credit {
+  font-size: var(--t-micro);
+  color: var(--ink-3);
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .map {
+    max-height: none;
+  }
+  .map__credit {
+    margin-left: 0;
+  }
+}
